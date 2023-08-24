@@ -1,0 +1,56 @@
+@CrossOrigin => CORS Cross-Origin Resource Sharing (Validación extra de seguridad)
+
+@RequestMapping ("/personas")
+
+
+@GetMapping
+public ResponseEntity<List <List<Persona>> findAll(){
+	try {
+		List<Persona> personas = personaService.findAll();
+		if (personas == null || personas.isEmpty()){
+			return ResponseEntity.status(400).body(null);
+		}
+		return ResponseEntity.status(200).body(personas);
+	} catch (Exception e) {
+		return ResponseEntity.status(400).body(null);
+	}
+}
+
+
+@PostMapping
+public Persona save (RequestBody Persona persona){
+
+	try{
+		Persona p = personaService.save(p);
+		return ResponseEntity.status(201).body(p);
+	}catch (Exception e){
+		return ResponseEntity.badRequest(200).body(e.getMessage());
+	}
+}
+
+
+@GetMapping("/(dni)")
+public ResponseEntity<Persona> findByDocumento(@PathVariable Long dni){
+
+	try {
+		Persona p = personaService.save(persona);
+		return ResponseEntity.status(200).body(persona);
+	} catch (Exception e) {
+		return ResponseEntity.badRequest(200).body(null);
+	}
+}
+
+
+@GetMapping("/search")
+public ResponseEntity<List<Persona>> search (@RequestParam(required = false) String nombre, @RequestParam(required = false))
+
+	try {
+		List<Persona> personasFiltradas = personaService.finByNombreOrEdad(nombre, edad);
+		return ResponseEntity.status(200).body(personasFiltradas);
+	} catch (Exception e) {
+		return ResponseEntity.status(404).body(null);
+	}
+}
+	
+hoppscotch.io
+

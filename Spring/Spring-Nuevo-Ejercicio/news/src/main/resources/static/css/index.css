@@ -1,0 +1,33 @@
+.main {
+    background-image: url(../img/Fondo.png);
+}
+
+.general {
+    max-width: 80%;
+    display: flex;
+    /* Default */
+    flex-direction: row;
+
+    flex-wrap: wrap;
+    border: 3px solid blueviolet;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-content: flex-end;
+}
+
+.noticias {
+    display: flex;
+    justify-content: space-around;
+    max-width: 300px;
+    max-height: 450px;
+    margin: 20px 20px 20px 20px;
+    border: 3px solid salmon;
+    box-shadow: 4px 4px 4px 4px lightslategray;
+    border-radius: 10px;
+}
+
+.toast {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}

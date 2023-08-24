@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+
+    <nav th:replace="/fragments/navbar :: nav"></nav>
+
+    <div th:if="${error != null}" class="card text-white bg-danger mb-4 mensajeError">
+        <div class="card-body">
+            <h6 class="card-title">Error 👎</h6>
+            <small class="card-text" th:text="${error}"></small>
+        </div>
+    </div>
+
+    <div th:if="${exito != null}" class="card text-white bg-success mb-4 mt-3 mensajeExito">
+        <div class="card-body">
+            <h6 class="card-title">Exito!</h6>
+            <small class="card-text" th:text="${exito}"></small>
+        </div>
+    </div>
+
+    <div class="container m-5">
+        <table class="table table-dark">
+
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roll</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody th:each="usuario : ${usuarios}">
+                <tr>
+                    <th th:text="${usuario.name}"></th>
+                    <td th:text="${usuario.email}"></td>
+                    <td th:text="${usuario.role}"></td>
+
+                    <td>
+                        <a th:href="@{/noticia/modificar/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>
+                            Modificar </a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/noticia/modificar/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>
+                            Eliminar </a>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${exito != null}" class="toast show " role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Noticia</strong>
+            <small>1 seg ago</small>
+            <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="toast-body contenido" th:text="${exito}">
+        </div>
+    </div>
+
+    <footer class="text-center text-white" style="background-color: #f1f1f1;">
+        <!-- Grid container -->
+        <div class="pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">Chinchilla-News.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+.micontenedor{
+    width: 700px;
+    background-color: bisque;
+}
+
+ /* Style buttons */
+ .btn {
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: RoyalBlue;
+  } 
+
+  .toast{
+    position:fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.contenido{
+    background-color: lightgreen;
+}
+
+.micontenedor{
+    max-width: 850px;
+}
+
+.mb-4{
+    max-width: 300px;
+}
