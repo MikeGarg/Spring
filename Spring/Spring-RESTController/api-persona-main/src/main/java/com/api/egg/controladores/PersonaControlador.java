@@ -76,7 +76,7 @@ public class PersonaControlador {
         }
     }
 
-    @PutMapping("/search")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable Integer id, @RequestBody Persona persona) {
         try {
             Persona p = ps.update(id,persona);
