@@ -56,11 +56,41 @@ public class PersonaControlador {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Persona> finById(@PathVariable Integer id) {
+        try {
+            Persona persona = ps.findById(id);
+            return ResponseEntity.status(200).body(persona);
+        } catch (Exception e) {
+            return ResponseEntity.status(404).body(null);
+        }
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<Persona>> search(@RequestParam(required = false) String nombre, @RequestParam(required = false) Integer edad) {
         try {
             List<Persona> personasFiltradas = ps.findByNombreOrEdad(nombre, edad);
             return ResponseEntity.status(200).body(personasFiltradas);
+        } catch (Exception e) {
+            return ResponseEntity.status(404).body(null);
+        }
+    }
+
+    @PutMapping("/search")
+    public ResponseEntity<Object> update(@PathVariable Integer id, @RequestBody Persona persona) {
+        try {
+            Persona p = ps.update(id,persona);
+            return ResponseEntity.status(201).body(p);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable Integer id) {
+        try {
+            ps.delete(id);
+            return ResponseEntity.status(200).body("Deleted");
         } catch (Exception e) {
             return ResponseEntity.status(404).body(null);
         }
